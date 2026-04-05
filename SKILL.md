@@ -152,7 +152,7 @@ media/daily-news-brief-cn/daily-news-brief-cn.png
       "bullets": ["新闻1", "新闻2"]
     }
   ],
-  "footer_note": "来源：人民网 / 36Kr / 虎嗅｜整理：AI"
+  "footer_note": "来源：人民网 / 36Kr / 虎嗅｜整理：DualFeasible"
 }
 ```
 
@@ -238,11 +238,12 @@ python skills/daily-news-brief-cn/scripts/render_newspaper.py \
 优先使用以下顺序：
 
 1. 抓新闻
-2. 去重与筛选
+2. 去重与筛选：加载 `media/daily-news-brief-cn/visited.json`，过滤掉近 7 天已发送的标题
 3. 提炼结构化要点
 4. 生成 JSON
 5. 渲染 HTML
-6. 可用时截图为 PNG
+6. 渲染完成后更新 visited.json（将本次生成所使用的标题写入当天日期 key 对应的 val，并清理 7 天前旧记录）
+7. 可用时截图为 PNG
 
 不要把未经整理的大段原文直接塞进模板，除非用户明确要求保留原文风格。
 
